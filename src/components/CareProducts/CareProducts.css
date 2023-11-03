@@ -1,0 +1,25 @@
+.care-products {
+  margin: 0 1rem;
+  margin-top: 4rem;
+  height: 37rem;
+  margin-bottom: 6rem;
+}
+.care-products .swiper {
+  width: 100%;
+  height: 100%;
+}
+.care-products .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}

@@ -1,0 +1,48 @@
+.support__extend {
+  -webkit-animation: moveUp 500ms linear forwards;
+  animation: moveUp 500ms linear forwards;
+}
+@-webkit-keyframes moveUp {
+  from {
+    bottom: -45rem;
+  }
+  to {
+    bottom: 1rem;
+  }
+}
+@keyframes moveUp {
+  from {
+    bottom: -45rem;
+  }
+  to {
+    bottom: 1rem;
+  }
+}
+.support__singlechat::before {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -7px;
+  bottom: 0;
+  border-left: 10px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 10px solid rgb(215, 10, 10);
+  -webkit-transform: rotate(80deg);
+  -ms-transform: rotate(80deg);
+  transform: rotate(80deg);
+}
+.support__answerchat::before {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: -5px;
+  bottom: -4px;
+  border-left: 10px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 10px solid rgb(255, 255, 255);
+  -webkit-transform: rotate(-46deg);
+  -ms-transform: rotate(-46deg);
+  transform: rotate(-46deg);
+}
