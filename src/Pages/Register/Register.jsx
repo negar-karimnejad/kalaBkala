@@ -46,8 +46,8 @@ function Register() {
   });
 
   const registerUser = async (values, { resetForm }) => {
-    await addNewUser(values);
-    if (!error) {
+    try {
+      await addNewUser(values).unwrap();
       Swal.fire({
         title: "ثبت نام با موفقیت انجام شد",
         toast: false,
@@ -63,35 +63,37 @@ function Register() {
           resetForm();
         }
       });
-    }
-    if (error?.message === "User already registered") {
-      Swal.fire({
-        text: "این ایمیل قبلا در سایت ثبت نام کرده است",
-        toast: true,
-        timer: 5000,
-        position: "top-right",
-        showConfirmButton: false,
-        icon: "error",
-      });
+    } catch (err) {
+      if (error?.message === "User already registered") {
+        Swal.fire({
+          text: "این ایمیل قبلا در سایت ثبت نام کرده است",
+          toast: true,
+          timer: 5000,
+          position: "top-right",
+          showConfirmButton: false,
+          icon: "error",
+        });
+      }
+      console.error(err);
     }
   };
 
   return (
     <>
-      <div className="bg-rose-50 flex flex-col items-center justify-between w-screen h-screen py-3 dark:bg-gray-800">
+      <div className="bg-rose-50 grid place-content-center w-screen h-screen py-10 dark:bg-gray-800">
         <Link to={"/"} title="کالا بی کالا">
           <img
             loading="lazy"
             src="../../../images/header/KalaBKala.webp"
             alt="KalaBKala"
-            className="w-60 rounded-md p-2 dark:bg-gray-500"
+            className="w-60 rounded-md p-2 dark:bg-gray-500 m-auto"
           />
         </Link>
-        <div className="flex flex-col justify-between items-center relative rounded-3xl w-[400px] h-full my-5 py-5 bg-white shadow-2xl dark:bg-gray-500">
+        <div className="rounded-3xl sm:w-[400px] w-[320px] h-full my-5 py-4 bg-white shadow-2xl dark:bg-gray-500">
           <h4 className="w-full text-center mb-2 text-3xl text-gray-700 font-bold dark:text-gray-50">
             عضویت
           </h4>
-          <p className="text-lg text-gray-500 dark:text-gray-50">
+          <p className="text-center text-lg text-gray-500 dark:text-gray-50">
             قبلا ثبت نام کرده اید؟
             <Link
               to={"/login"}
@@ -193,7 +195,7 @@ function Register() {
                 </div>
                 <div>
                   <button
-                    className="bg-rose-700 rounded-lg text-white p-3 my-5 w-full shadow-rose-300 shadow-lg dark:bg-gray-600 dark:hover:bg-gray-900 dark:shadow-gray-950"
+                    className="bg-rose-700 rounded-lg text-white p-3 w-full shadow-rose-300 shadow-lg dark:bg-gray-600 dark:hover:bg-gray-900 dark:shadow-gray-950"
                     type="submit"
                     disabled={isSubmitting}
                   >{`${isSubmitting ? "در حال تایید..." : "تایید"}`}</button>
@@ -202,8 +204,8 @@ function Register() {
             )}
           </Formik>
         </div>
-        <div>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+        <div className="mt-8">
+          <p className="sm:text-lg text-gray-600 dark:text-gray-300">
             با عضویت در سایت، تمامی{" "}
             <Link to={"/terms"} className="text-gray-400 hover:text-rose-600">
               قوانین و شرایط
@@ -212,7 +214,6 @@ function Register() {
           </p>
         </div>
       </div>
-      <Support />
     </>
   );
 }

@@ -44,16 +44,16 @@ function Login() {
 
   return (
     <>
-      <div className="bg-rose-50 flex flex-col items-center justify-between w-screen h-screen py-6 dark:bg-gray-800">
+      <div className="bg-rose-50 grid place-content-center w-screen h-screen py-6 dark:bg-gray-800">
         <Link to={"/"} title="کالا بی کالا">
           <img
             loading="lazy"
             src="../../../images/header/KalaBKala.webp"
             alt="KalaBKala"
-            className="w-60 rounded-md p-2 dark:bg-gray-500"
+            className="w-60 rounded-md p-2 dark:bg-gray-500 m-auto"
           />
         </Link>
-        <div className="relative rounded-3xl flex flex-col items-center justify-between w-[400px] h-96 my-5 py-5 bg-white shadow-2xl dark:bg-gray-500">
+        <div className="relative rounded-3xl flex flex-col items-center justify-between sm:w-[400px] w-[320px] h-96 my-5 py-5 bg-white shadow-2xl dark:bg-gray-500">
           <h4 className="w-full text-center text-3xl text-gray-700 font-bold dark:text-white">
             ورود
           </h4>
@@ -106,7 +106,7 @@ function Login() {
           </form>
         </div>
         <div>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="sm:text-lg text-gray-600 dark:text-gray-300">
             با عضویت در سایت، تمامی{" "}
             <Link to={"/terms"} className="text-gray-400 hover:text-rose-600">
               قوانین و شرایط
@@ -115,7 +115,7 @@ function Login() {
           </p>
         </div>
       </div>
-      <Support />
+      {/* <Support /> */}
     </>
   );
 }

@@ -8,22 +8,25 @@ import Shoppingcart from "../Shoppingcart/Shoppingcart";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import HeaderUserIcon from "../HeaderUserIcon/HeaderUserIcon";
 import "./Header.css";
+import { useDispatch } from "react-redux";
+import { setIsActive } from "../../Redux/store/ShoppingCart";
+import { setIsShow } from "../../Redux/store/mobileMenu";
 
 function Header() {
   const inputRef = useRef(null);
-  const [isShowMobmenu, setIsShowMobmenu] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [searchedProducts, setSearchedProducts] = useState([]);
   const [loader, setLoader] = useState(false);
+  const dispatch = useDispatch();
 
-  const { data: allProducts } = useGetAllProductsQuery();
+  const { data: allProducts = [] } = useGetAllProductsQuery();
 
   const searchHandler = () => {
     clickOnMobMenu();
     inputRef.current.focus();
   };
   const clickOnMobMenu = () => {
-    setIsShowMobmenu((prev) => !prev);
+    dispatch(setIsShow(true));
   };
 
   const searchSubmit = (e) => {
@@ -105,7 +108,7 @@ function Header() {
               </div>
             </div>
           </form>
-          <div className="flex items-center w-64 justify-end">
+          <div className="flex items-center sm:w-64 justify-end">
             <HeaderUserIcon />
           </div>
         </div>
@@ -151,10 +154,7 @@ function Header() {
           </div>
         </form>
       </div>
-      <MobileMenu
-        isShowMobmenu={isShowMobmenu}
-        setIsShowMobmenu={setIsShowMobmenu}
-      />
+      <MobileMenu />
     </>
   );
 }

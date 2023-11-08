@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
+import { setIsShow } from "../../Redux/store/mobileMenu";
+import { useDispatch } from "react-redux";
 
 function SearchProductBox(product) {
+  const dispatch = useDispatch();
   return (
-    <Link to={`/products-info/${product.name.replaceAll(" ", "-")}`}>
+    <Link
+      onClick={() => dispatch(setIsShow(false))}
+      to={`/products-info/${product.name.replaceAll(" ", "-")}`}
+    >
       <div className="h-52 border border-solid border-gray-200 transition-all hover:bg-gray-100 dark:text-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 group">
         <div className="flex items-center justify-between">
           <img

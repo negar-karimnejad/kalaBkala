@@ -30,7 +30,9 @@ function RandomProducts() {
 
   return (
     <div className="randomProducts">
-      <h2 className="text-center font-bold text-3xl mb-10 dark:text-white">محصولات اتفاقی</h2>
+      <h2 className="text-center font-bold text-3xl mb-10 dark:text-white">
+        محصولات اتفاقی
+      </h2>
       <Swiper
         breakpoints={{
           0: {
@@ -51,14 +53,17 @@ function RandomProducts() {
         }}
         className="mySwiper"
       >
-        {!isLoading &&
-          randomProducts?.map((product) => (
-            <SwiperSlide key={product.id} className="dark:bg-gray-800">
+        {randomProducts?.map((product) => (
+          <SwiperSlide key={product.id} className="dark:bg-gray-800">
+            {isLoading ? (
+              <ScreenLoader />
+            ) : (
               <div className="flex flex-col border border-solid border-gray-100 shadow-lg shadow-gray-300 h-[35rem] bg-white rounded-lg overflow-hidden dark:shadow-gray-950">
                 <ProductBox {...product} />
               </div>
-            </SwiperSlide>
-          ))}
+            )}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

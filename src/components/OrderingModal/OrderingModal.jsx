@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-function OrderingModal({ isShowOrderingModal, setIsShowOrderingModal }) {
+function OrderingModal({
+  ordering,
+  isShowOrderingModal,
+  setIsShowOrderingModal,
+}) {
   return (
     <div
       className={`${
@@ -26,7 +30,9 @@ function OrderingModal({ isShowOrderingModal, setIsShowOrderingModal }) {
         <ul className="cursor-pointer bg-white text-lg w-full flex flex-col text-center text-gray-600 mt-5 dark:bg-gray-800 dark:text-gray-300">
           <Link to={`/products/order/most-visited`}>
             <li
-              className="sm:py-2 py-4 border-2 border-solid border-white border-b-gray-50 hover:bg-rose-50 hover:shadow-md hover:font-bold hover:text-black dark:border-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300"
+              className={`${
+                ordering === "most-visited" ? "text-rose-600 font-bold" : ""
+              } cursor-pointer sm:py-2 py-4 border-2 border-solid border-white border-b-gray-50 hover:bg-rose-50 hover:shadow-md hover:font-bold hover:text-black dark:border-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300`}
               onClick={() => setIsShowOrderingModal(false)}
             >
               پربازدیدترین
@@ -34,7 +40,9 @@ function OrderingModal({ isShowOrderingModal, setIsShowOrderingModal }) {
           </Link>
           <Link to={`/products/order/cheapest`}>
             <li
-              className="sm:py-2 py-4 border-2 border-solid border-white border-b-gray-50 hover:bg-rose-50 hover:shadow-md hover:font-bold hover:text-black dark:border-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300"
+              className={`${
+                ordering === "cheapest" ? "text-rose-600 font-bold" : ""
+              } cursor-pointer sm:py-2 py-4 border-2 border-solid border-white border-b-gray-50 hover:bg-rose-50 hover:shadow-md hover:font-bold hover:text-black dark:border-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300`}
               onClick={() => setIsShowOrderingModal(false)}
             >
               ارزان ترین
@@ -42,7 +50,9 @@ function OrderingModal({ isShowOrderingModal, setIsShowOrderingModal }) {
           </Link>
           <Link to={`/products/order/expensive`}>
             <li
-              className="sm:py-2 py-4 border-2 border-solid border-white border-b-gray-50 hover:bg-rose-50 hover:shadow-md hover:font-bold hover:text-black dark:border-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300"
+              className={`${
+                ordering === "expensive" ? "text-rose-600 font-bold" : ""
+              } cursor-pointer sm:py-2 py-4 border-2 border-solid border-white border-b-gray-50 hover:bg-rose-50 hover:shadow-md hover:font-bold hover:text-black dark:border-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300`}
               onClick={() => setIsShowOrderingModal(false)}
             >
               گران ترین
@@ -50,7 +60,9 @@ function OrderingModal({ isShowOrderingModal, setIsShowOrderingModal }) {
           </Link>
           <Link to={`/products/order/newest`}>
             <li
-              className="sm:py-2 py-4 border-2 border-solid border-white border-b-gray-50 hover:bg-rose-50 hover:shadow-md hover:font-bold hover:text-black dark:border-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300"
+              className={`${
+                ordering === "newest" ? "text-rose-600 font-bold" : ""
+              } cursor-pointer sm:py-2 py-4 border-2 border-solid border-white border-b-gray-50 hover:bg-rose-50 hover:shadow-md hover:font-bold hover:text-black dark:border-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300`}
               onClick={() => setIsShowOrderingModal(false)}
             >
               جدیدترین

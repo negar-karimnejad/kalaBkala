@@ -82,6 +82,7 @@ function Products() {
   return (
     <div div className="products">
       <OrderingModal
+        ordering={ordering}
         isShowOrderingModal={isShowOrderingModal}
         setIsShowOrderingModal={setIsShowOrderingModal}
       />

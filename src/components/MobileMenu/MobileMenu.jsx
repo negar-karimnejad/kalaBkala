@@ -5,10 +5,13 @@ import { FiSearch } from "react-icons/fi";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useGetAllProductsQuery } from "../../Redux/store/allProducts";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsShow } from "../../Redux/store/mobileMenu";
 
-function MobileMenu({ isShowMobmenu, setIsShowMobmenu }) {
+function MobileMenu() {
   const mobmenuRef = useRef();
   const inputRef = useRef(null);
+  const dispatch = useDispatch();
 
   const [isShowDropDownMenu, setIsShowDropDownMenu] = useState(false);
   const [dropdownTitle, setDropdownTitle] = useState("");
@@ -16,7 +19,9 @@ function MobileMenu({ isShowMobmenu, setIsShowMobmenu }) {
   const [mobSearchValue, setMobSearchValue] = useState("");
   const [loader, setLoader] = useState(false);
 
-  const { data: allProducts } = useGetAllProductsQuery();
+  const is_Show = useSelector((state) => state.mobileMenu.is_Show);
+
+  const { data: allProducts = [] } = useGetAllProductsQuery();
 
   const mobSearchSubmit = (e) => {
     setMobSearchValue(e.target.value);
@@ -34,11 +39,11 @@ function MobileMenu({ isShowMobmenu, setIsShowMobmenu }) {
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (
-        isShowMobmenu &&
+        is_Show &&
         mobmenuRef.current &&
         !mobmenuRef.current.contains(e.target)
       ) {
-        setIsShowMobmenu(false);
+        dispatch(setIsShow(false));
         setMobSearchValue("");
         setMobSearchedProducts([]);
       }
@@ -47,7 +52,7 @@ function MobileMenu({ isShowMobmenu, setIsShowMobmenu }) {
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
-  }, [isShowMobmenu]);
+  }, [is_Show]);
 
   useEffect(() => {
     if (mobSearchValue) {
@@ -59,14 +64,10 @@ function MobileMenu({ isShowMobmenu, setIsShowMobmenu }) {
   }, [mobSearchValue]);
 
   return (
-    <div
-      className={`${
-        isShowMobmenu ? "bg-darker" : ""
-      } header__overlay lg:hidden`}
-    >
+    <div className={`${is_Show ? "bg-darker" : ""} header__overlay lg:hidden`}>
       <div
         className={`${
-          isShowMobmenu
+          is_Show
             ? "header__mobmenu-list show-mobmenu dark:bg-gray-900 dark:text-gray-200"
             : "header__mobmenu-list"
         }`}

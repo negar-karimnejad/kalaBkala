@@ -20,9 +20,9 @@ function Landing() {
           <Swiper
             loop={true}
             navigation={true}
-            speed={1500}
+            speed={900}
             autoplay={{
-              delay: 6000,
+              delay: 4000,
               disableOnInteraction: false,
             }}
             modules={[Navigation, Autoplay]}

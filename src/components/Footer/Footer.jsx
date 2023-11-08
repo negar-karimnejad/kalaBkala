@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 function Footer() {
+  const linkClickHandler = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div className=" bg-gray-100 mt-[2rem] leading-[2.5rem] text-gray-500 text-[1.2rem] dark:bg-gray-800 dark:text-gray-400 dark:border dark:border-solid dark:border-gray-800 dark:border-t-gray-700">
       <div className="container">
@@ -32,19 +35,33 @@ function Footer() {
             </h4>
             <ul>
               <li className="mb-5 transition-all hover:text-gray-700 dark:hover:text-rose-600">
-                <Link to={"/products/category/perfume"}> خرید ادکلن ارزان</Link>
+                <Link
+                  onClick={linkClickHandler}
+                  to={"/products/category/perfume"}
+                >
+                  {" "}
+                  خرید ادکلن ارزان
+                </Link>
               </li>
               <li className="mb-5 transition-all hover:text-gray-700 dark:hover:text-rose-600">
-                <Link to={"/post-tracking"}>پیگیری مرسوله‌ها‌</Link>
+                <Link onClick={linkClickHandler} to={"/post-tracking"}>
+                  پیگیری مرسوله‌ها‌
+                </Link>
               </li>
               <li className="mb-5 transition-all hover:text-gray-700 dark:hover:text-rose-600">
-                <Link to={"/privacy-policy"}>حریم خصوصی</Link>
+                <Link onClick={linkClickHandler} to={"/privacy-policy"}>
+                  حریم خصوصی
+                </Link>
               </li>
               <li className="mb-5 transition-all hover:text-gray-700 dark:hover:text-rose-600">
-                <Link to={"/terms"}>شرایط و قوانین مرجوعی</Link>
+                <Link onClick={linkClickHandler} to={"/terms"}>
+                  شرایط و قوانین مرجوعی
+                </Link>
               </li>
               <li className="mb-5 transition-all hover:text-gray-700 dark:hover:text-rose-600">
-                <Link to={"/about-us"}>درباره ما</Link>
+                <Link onClick={linkClickHandler} to={"/about-us"}>
+                  درباره ما
+                </Link>
               </li>
               <li className="mb-5 transition-all hover:text-gray-700 dark:hover:text-rose-600">
                 <Link to={""} className="persian-font">

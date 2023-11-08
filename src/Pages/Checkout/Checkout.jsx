@@ -43,7 +43,7 @@ function Checkout() {
       <div className="flex md:flex-row flex-col p-5">
         <div className="relative w-full md:w-6/12 bg-gray-100 p-5 py-14 dark:bg-gray-700 dark:border dark:border-solid dark:border-gray-700">
           <div className="bg-[url('../../../../images/checkout/circle.svg')] bg-repeat-x -top-3 w-auto h-6 absolute left-0 right-0 m-auto dark:bg-[url('../../../../images/checkout/darkCircle.svg')]"></div>
-          <div className="bg-[url('../../../../images/checkout/circle.svg')] bg-repeat-x -bottom-2 w-auto h-6 absolute left-0 right-0 m-auto dark:bg-[url('../../../../images/checkout/darkCircle.svg')]"></div>
+          <div className="bg-[url('../../../../images/checkout/circle.svg')] bg-repeat-x -bottom-3 w-auto h-6 absolute left-0 right-0 m-auto dark:bg-[url('../../../../images/checkout/darkCircle.svg')]"></div>
           <h2 className="pt-5 pb-10 text-center font-bold text-2xl dark:text-white">
             سفارش شما
           </h2>

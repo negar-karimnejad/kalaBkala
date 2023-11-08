@@ -71,26 +71,22 @@ function AccountDetails() {
                 type="text"
                 title="شماره موبایل"
               />
-              <fieldset className="p-8 pb-16 space-y-10 border-2 border-solid border-gray-300 dark:border-gray-700">
+              <fieldset className="w-full relative p-8 pb-24 space-y-10 border-2 border-solid border-gray-300 dark:border-gray-700">
                 <legend className="text-2xl font-bold px-4 dark:text-gray-200">
                   تغییر گذرواژه
                 </legend>
-                <div className="flex flex-col my-5 whitespace-nowrap">
+                <div className="flex flex-col my-5">
                   <FormValidationField
                     name="prevPassword"
                     type="password"
-                    title={
-                      "گذرواژه پیشین (در صورتی که قصد تغییر ندارید خالی بگذارید)"
-                    }
+                    title={"گذرواژه پیشین"}
                   />
                 </div>
-                <div className="flex flex-col my-5 whitespace-nowrap">
+                <div className="flex flex-col my-5">
                   <FormValidationField
                     name="newPassword"
                     type="password"
-                    title={
-                      "گذرواژه جدید (در صورتی که قصد تغییر ندارید خالی بگذارید)"
-                    }
+                    title={"گذرواژه جدید"}
                   />
                 </div>
                 <div className="flex flex-col my-5">
@@ -100,6 +96,10 @@ function AccountDetails() {
                     title={"تکرار گذرواژه جدید"}
                   />
                 </div>
+                <p className="text-gray-400 text-sm absolute bottom-2">
+                  <span className="text-red-500 align-sub ml-1">*</span>در صورتی
+                  که قصد تغییر ندارید، فیلدها را خالی بگذارید.
+                </p>
               </fieldset>
               <div>
                 <button

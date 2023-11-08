@@ -4,6 +4,7 @@ import ProductBox from "../ProductBox/ProductBox";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./CareProducts.css";
+import ScreenLoader from "../ScreenLoader/ScreenLoader";
 
 function CareProducts() {
   const { data: careProducts, isLoading } =
@@ -34,14 +35,17 @@ function CareProducts() {
         }}
         className="mySwiper"
       >
-        {!isLoading &&
-          careProducts?.map((product) => (
-            <SwiperSlide key={product.id} className="dark:bg-gray-800">
+        {careProducts?.map((product) => (
+          <SwiperSlide key={product.id} className="dark:bg-gray-800">
+            {isLoading ? (
+              <ScreenLoader />
+            ) : (
               <div className="flex flex-col border border-solid border-gray-100 shadow-lg shadow-gray-300 h-[35rem] bg-white rounded-lg overflow-hidden dark:shadow-gray-950">
                 <ProductBox {...product} />
               </div>
-            </SwiperSlide>
-          ))}
+            )}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

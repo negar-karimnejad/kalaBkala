@@ -27,6 +27,7 @@
 .single-product__swiper:hover .swiper-button-prev:after {
   visibility: visible;
 }
+
 .single-product__thumbs-swiper .swiper-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;

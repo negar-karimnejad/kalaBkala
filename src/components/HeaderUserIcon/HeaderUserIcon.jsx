@@ -22,7 +22,7 @@ function HeaderUserIcon() {
   const { data: shoppingCartItems, isLoading } = useGetShoppingCartQuery();
   const [signOut] = useSignOutUserMutation();
 
-  const [theme, setTheme] = useState(localStorage.theme);
+  const [theme, setTheme] = useState(localStorage.theme || "light");
   const colorTheme = theme === "dark" ? "light" : "dark";
 
   useEffect(() => {
@@ -94,7 +94,7 @@ function HeaderUserIcon() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="w-9 h-9 cursor-pointer grayscale transition-all duration-300 hover:grayscale-0"
+          className="sm:w-9 sm:h-9 w-7 h-7 cursor-pointer grayscale transition-all duration-300 hover:grayscale-0"
           onClick={() => setTheme("dark")}
         >
           <path
@@ -110,7 +110,7 @@ function HeaderUserIcon() {
         <svg
           viewBox="0 0 24 24"
           fill="none"
-          className="grayscale hover:grayscale-0  w-9 h-9 cursor-pointer transition-all duration-300 "
+          className="grayscale hover:grayscale-0  sm:w-9 sm:h-9 w-7 h-7 cursor-pointer transition-all duration-300 "
           onClick={() => setTheme("light")}
         >
           <path
@@ -131,7 +131,7 @@ function HeaderUserIcon() {
           ></path>
         </svg>
       )}
-      <span className="w-[2px] h-7 bg-gray-100 mx-3"></span>
+      <span className="w-[2px] h-7 bg-gray-100 sm:mx-3 mx-1"></span>
       <div className="relative header__user-icon h-10 items-center flex">
         <Link to={!isAuthing && session.session?.access_token ? "" : "/login"}>
           <PiUser
@@ -139,11 +139,11 @@ function HeaderUserIcon() {
               !isAuthing && session.session?.access_token
                 ? "text-rose-500"
                 : "dark:text-gray-200"
-            } text-3xl cursor-pointer header__icon`}
+            } sm:text-3xl text-2xl cursor-pointer header__icon`}
           />
         </Link>
         {!isAuthing && session.session?.access_token && (
-          <div className="hidden text-lg transition-all duration-500 header__user-info bg-white shadow shadow-gray-400 absolute top-8 left-1/2 transform -translate-x-7 w-64 py-3 px-6 rounded-sm dark:bg-gray-900 dark:shadow-none">
+          <div className="hidden text-lg transition-all duration-500 header__user-info bg-white shadow shadow-gray-400 absolute top-8 left-1/2 transform -translate-x-7 w-64 py-3 px-6 rounded-sm dark:bg-gray-900 dark:shadow-sm dark:shadow-gray-400">
             <ul className="space-y-4 text-gray-500 dark:text-gray-300">
               <li className="font-bold border border-solid border-white border-b-gray-200 pb-2 dark:border-gray-900 dark:border-b-gray-600">
                 <span className="fa fa-user-o text-xl ml-2"></span>{" "}
@@ -185,15 +185,15 @@ function HeaderUserIcon() {
           </div>
         )}
       </div>
-      <span className="w-[2px] h-7 bg-gray-100 mx-3"></span>
+      <span className="w-[2px] h-7 bg-gray-100 sm:mx-3 mx-1"></span>
       <div className="flex items-center">
         <div
           className="relative cursor-pointer"
           onClick={() => dispatch(setIsActive(true))}
         >
-          <PiBag className="text-3xl transition-all hover:text-gray-400 dark:text-white dark:hover:text-gray-400" />
+          <PiBag className="sm:text-3xl text-2xl transition-all hover:text-gray-400 dark:text-white dark:hover:text-gray-400" />
           {!isLoading && !isAuthing && session?.session?.access_token && (
-            <span className="absolute w-5 h-5 text-xs bg-rose-600 text-white -left-3 -top-1 rounded-full flex items-center justify-center persian-font">
+            <span className="absolute sm:w-5 sm:h-5 w-4 h-4 text-xs bg-rose-600 text-white -left-3 -top-1 pt-0.5 sm:pt-0 rounded-full flex items-center justify-center persian-font">
               {shoppingCart?.length}
             </span>
           )}

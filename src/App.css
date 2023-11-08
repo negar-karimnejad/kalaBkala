@@ -186,3 +186,9 @@ body {
   width: 90%;
   margin: 0 auto;
 }
+.swal2-container {
+  padding: 0.5rem  1rem;
+}
+.swal2-title {
+  font-size: 1.7rem;
+}

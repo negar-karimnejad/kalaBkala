@@ -42,7 +42,7 @@ function Support() {
           />
         </div>
       ) : (
-        <div className="h-[41rem] w-[28rem] fixed right-5 -bottom-[45rem] bg-white flex flex-col justify-between rounded-lg overflow-hidden shadow-gray-800 shadow-2xl z-50 support__extend">
+        <div className="h-[41rem] sm:w-[28rem] mx-5 fixed sm:right-5 -bottom-[45rem] bg-white flex flex-col justify-between rounded-lg overflow-hidden shadow-gray-800 shadow-2xl z-50 support__extend">
           <div className="p-3 flex justify-between bg-rose-600 text-white">
             <div className="flex items-center">
               <MdSupportAgent className="text-3xl me-3 text-gray-700 p-2 w-14 h-14 bg-white rounded-full" />
@@ -71,7 +71,7 @@ function Support() {
                 </div>
                 {isShowAnswer && (
                   <div className="flex flex-col">
-                    <p className="support__answerchat bg-white text-gray-500 relative w-fit my-2 me-14 p-2 rounded-lg">
+                    <p className="support__answerchat bg-white text-gray-500 relative w-64 my-2 p-2 rounded-lg">
                       در حال حاضر قادر به پاسخگویی به شما نیستیم. <br />
                       در کوتاهترین مدت همکاران ما با شما ارتباط برقرار خواهند
                       کرد. با تشکر

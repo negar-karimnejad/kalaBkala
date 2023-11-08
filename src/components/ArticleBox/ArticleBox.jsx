@@ -18,12 +18,12 @@ function ArticleBox(article) {
           {title}
         </div>
         <p className="leading-6 text-gray-700 text-[14px] dark:text-gray-400">
-          {description}
+          {description?.slice(0, 130)}...
         </p>
         <button>
           <Link
             to={`/${id + title.replaceAll(" ", "-")}`}
-            className="text-rose-600 text-base font-bold dark:text-gray-100 dark:font-medium hover:text-rose-800 dark:hover:text-rose-500 dark:hover:font-bold"
+            className="absolute bottom-5 left-0 right-0 m-auto text-rose-600 text-base font-bold dark:text-gray-100 dark:font-medium hover:text-rose-800 dark:hover:text-rose-500 dark:hover:font-bold"
           >
             ادامه مطلب
           </Link>

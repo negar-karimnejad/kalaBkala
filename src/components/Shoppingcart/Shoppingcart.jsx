@@ -15,10 +15,13 @@ import { useDispatch, useSelector } from "react-redux";
 function Shoppingcart() {
   const shoppingcartRef = useRef();
   const dispatch = useDispatch();
+
   const [loader, setLoader] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [shoppingCart, setShoppingCart] = useState([]);
+
   const isActive = useSelector((state) => state.shoppingCart.is_active);
+
   const { data: session, isLoading: isAuthing } = useGetUserQuery();
   const { data: shoppingCartItems, isLoading } = useGetShoppingCartQuery();
   const [deleteFromCart] = useDeleteFromShoppingCartMutation();
@@ -27,7 +30,11 @@ function Shoppingcart() {
     const UserProducts = shoppingCartItems?.filter(
       (item) => item.userID === session?.session?.user.id
     );
-    setShoppingCart(UserProducts);
+    setShoppingCart(
+      UserProducts?.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      )
+    );
     if (UserProducts) {
       let price = 0;
       UserProducts.map((product) => (price += product.price * product.counter));
@@ -39,7 +46,6 @@ function Shoppingcart() {
     deleteFromCart(id);
     setLoader(id);
   };
-
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (
@@ -83,18 +89,23 @@ function Shoppingcart() {
             <p className="font-bold text-lg my-5">
               هیچ محصولی در سبد خرید نیست.
             </p>
-            <Link to={"/products/1"}>
+
+            <Link
+              to={"/products/1"}
+              onClick={() => dispatch(setIsActive(false))}
+            >
               <Button title="بازگشت به فروشگاه" />
             </Link>
           </div>
         ) : (
-          <div className="w-full border border-solid border-white border-b-gray-300 dark:border-0">
-            <div className="overflow-y-auto h-96">
+          <div className="h-full w-full flex flex-col justify-between border border-solid border-white border-b-gray-300 dark:border-0">
+            <div className="overflow-y-auto h-2/3 mb-80">
               {shoppingCart?.map((product) => (
                 <div key={product.id}>
-                  <div className="relative overflow-y-auto flex justify-between py-4 px-3 border border-solid border-white border-b-gray-300 cursor-pointer transition-all hover:bg-gray-100 dark:border-gray-900 dark:border-b-gray-700 dark:hover:bg-gray-800">
+                  <div className="relative overflow-y-auto h-fit flex justify-between py-3 px-3 border border-solid border-white border-b-gray-300 cursor-pointer transition-all hover:bg-gray-100 dark:border-gray-900 dark:border-b-gray-700 dark:hover:bg-gray-800">
                     <Link
                       to={`/products-info/${product.name.replaceAll(" ", "-")}`}
+                      onClick={() => dispatch(setIsActive(false))}
                     >
                       <div className="flex items-center">
                         <img
@@ -103,7 +114,7 @@ function Shoppingcart() {
                           alt={product.name}
                           className="w-28"
                         />
-                        <div className="flex flex-col gap-y-4 w-52 dark:mr-2">
+                        <div className="flex flex-col gap-y-4 w-52 mr-2">
                           <p className="font-bold text-gray-700 text-md dark:text-gray-50 dark:font-medium">
                             {product.title}
                           </p>
@@ -132,25 +143,32 @@ function Shoppingcart() {
                 </div>
               ))}
             </div>
-            <div className="text-xl font-bold flex justify-between w-full p-6 border border-solid border-white border-b-gray-300 dark:border-gray-900 dark:border-y-gray-700 dark:font-medium">
-              <h2 className="  ">جمع کل سبد خرید:</h2>
-              <p className="persian-font text-rose-600 dark:text-gray-50 dark:font-medium dark:text-2xl">
-                {totalPrice.toLocaleString()} تومان
-              </p>
-            </div>
-            <div className="flex flex-col p-6 w-full">
-              <Link
-                to={"/cart"}
-                className="text-center text-lg text-gray-900 bg-gray-300 p-2 mt-3 transition-all font-bold hover:bg-gray-400"
+            <div className="absolute bottom-0 left-0 w-full bg-inherit h-60">
+              <div
+                className="bg-white dark:bg-gray-900 text-xl font-bold flex justify-between w-full p-6 border border-solid border-white border-b-gray-300 dark:border-gray-900 dark:border-\
+              -gray-700 dark:font-medium"
               >
-                مشاهده سبد خرید
-              </Link>
-              <Link
-                to={"/checkout"}
-                className="text-center text-lg text-white bg-rose-600 p-2 mt-3 transition-all hover:bg-rose-700"
-              >
-                تسویه حساب
-              </Link>
+                <h2 className="  ">جمع کل سبد خرید:</h2>
+                <p className="persian-font text-rose-600 dark:text-gray-50 dark:font-medium dark:text-2xl">
+                  {totalPrice.toLocaleString()} تومان
+                </p>
+              </div>
+              <div className="bg-white dark:bg-gray-900 flex flex-col p-6 w-full">
+                <Link
+                  to={"/cart"}
+                  onClick={() => dispatch(setIsActive(false))}
+                  className="text-center text-lg text-gray-900 bg-gray-300 p-2 mt-3 transition-all font-bold hover:bg-gray-400"
+                >
+                  مشاهده سبد خرید
+                </Link>
+                <Link
+                  to={"/checkout"}
+                  onClick={() => dispatch(setIsActive(false))}
+                  className="text-center text-lg text-white bg-rose-600 p-2 mt-3 transition-all hover:bg-rose-700"
+                >
+                  تسویه حساب
+                </Link>
+              </div>
             </div>
           </div>
         )}

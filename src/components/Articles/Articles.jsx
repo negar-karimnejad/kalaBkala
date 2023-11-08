@@ -36,12 +36,12 @@ function Articles() {
         className="mySwiper"
       >
         {!isLoading &&
-          articles.map((article) => (
+          articles?.map((article) => (
             <SwiperSlide key={article.id}>
               {isLoading ? (
                 <ScreenLoader />
               ) : (
-                <div className="h-[34rem] overflow-hidden rounded shadow-lg shadow-gray-300 dark:shadow-gray-950 dark:bg-gray-700">
+                <div className="h-[35rem] relative overflow-hidden rounded shadow-lg shadow-gray-300 dark:shadow-gray-950 dark:bg-gray-700">
                   <ArticleBox {...article} />
                 </div>
               )}

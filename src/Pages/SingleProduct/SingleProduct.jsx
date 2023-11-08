@@ -154,23 +154,29 @@ function SingleProduct() {
           <ScreenLoader />
         ) : (
           <>
-            <div className="pt-10 flex items-center justify-center w-full md:w-6/12 h-fit">
+            <div className="pt-10 flex items-center justify-center w-full md:w-5/12 h-fit">
               <div className="relative overflow-hidden">
                 <Swiper
                   className="single-product__swiper"
                   modules={[FreeMode, Navigation, Thumbs, EffectFade]}
-                  thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
+                  thumbs={{
+                    swiper:
+                      thumbsSwiper && !thumbsSwiper.destroyed
+                        ? thumbsSwiper
+                        : null,
+                  }}
                   loop={true}
                   effect={"fade"}
                   spaceBetween={0}
                   slidesPerView={1}
                   navigation
+                  allowTouchMove={false}
                 >
                   {src.map((src, index) => (
                     <SwiperSlide key={index}>
                       <Magnifier
-                        mgWidth={250}
-                        mgHeight={250}
+                        mgWidth={260}
+                        mgHeight={260}
                         zoomFactor={0.6}
                         mgShowOverflow={false}
                         src={src}
@@ -182,7 +188,6 @@ function SingleProduct() {
                 <Swiper
                   className="mt-10 single-product__thumbs-swiper"
                   slidesPerView={6}
-                  navigation
                   onSwiper={setThumbsSwiper}
                   spaceBetween={20}
                   freeMode={true}
@@ -203,17 +208,17 @@ function SingleProduct() {
                 </Swiper>
               </div>
             </div>
-            <div className="w-full md:w-6/12">
-              <div className="flex flex-col gap-14 p-4 pb-14 border border-solid border-white border-b-gray-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200">
-                <p className="text-2xl font-bold pb-5 border border-solid border-white border-b-gray-100 dark:border-gray-900 dark:border-b-gray-700">
+            <div className="w-full md:w-7/12">
+              <div className="flex flex-col gap-14 py-4 pb-14 border border-solid border-white border-b-gray-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 dark:px-3">
+                <p className="text-2xl font-bold pb-5 border border-solid border-white border-b-gray-100 dark:border-gray-900 dark:border-b-gray-700 dark:font-medium">
                   {title}
                 </p>
                 <div>
-                  <div className="gap-x-2 text-xl flex items-center">
+                  <div className="gap-2 text-xl flex items-center sm:flex-nowrap flex-wrap">
                     <p
                       className={`${
                         exist ? "text-rose-600" : "text-gray-300"
-                      } persian-font  text-3xl font-bold`}
+                      } persian-font whitespace-nowrap text-3xl font-bold dark:font-medium`}
                     >
                       {exist ? price.toLocaleString() : "ناموجود"}{" "}
                       {exist && "تومان"}
@@ -235,7 +240,7 @@ function SingleProduct() {
                         );
                       })}
                     </div>
-                    <span className="opacity-50 ">
+                    <span className="opacity-50 whitespace-nowrap">
                       (دیدگاه {comments?.length} کاربر)
                     </span>
                   </div>

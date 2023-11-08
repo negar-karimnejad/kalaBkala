@@ -114,12 +114,12 @@ function ShoppingCart() {
                             </div>
                           </div>
                         </td>
-                        <td className="align-middle md:table-cell block">
+                        <td className="align-middle md:table-cell block dark:px-2">
                           <p className="xl:mx-3 md:mr-2 xl:w-96 md:w-60 md:text-lg text-base">
                             {product.title}
                           </p>
                         </td>
-                        <td className="border border-dashed border-white border-b-gray-400 place-content-end justify-between md:table-cell flex md:px-8 py-2 md:py-0 whitespace-nowrap persian-font dark:border-gray-900 dark:border-b-gray-200">
+                        <td className="dark:px-2 border border-dashed border-white border-b-gray-400 place-content-end justify-between md:table-cell flex md:px-8 py-2 md:py-0 whitespace-nowrap persian-font dark:border-gray-900 dark:border-b-gray-200">
                           <p className="md:hidden opacity-100 font-bold text-sm">
                             قیمت
                           </p>
@@ -127,7 +127,7 @@ function ShoppingCart() {
                             {product.price.toLocaleString()} تومان
                           </p>
                         </td>
-                        <td className="border border-dashed border-white border-b-gray-400 place-content-end justify-between md:table-cell flex md:mx-8 py-2 md:py-0 dark:border-gray-900 dark:border-b-gray-200">
+                        <td className="dark:px-2 border border-dashed border-white border-b-gray-400 place-content-end justify-between md:table-cell flex md:mx-8 py-2 md:py-0 dark:border-gray-900 dark:border-b-gray-200">
                           <p className="md:hidden opacity-100 font-bold text-sm">
                             تعداد
                           </p>
@@ -150,8 +150,8 @@ function ShoppingCart() {
                             </button>
                           </div>
                         </td>
-                        <td className="place-content-end justify-between w-full md:table-cell py-2 md:py-0 flex whitespace-nowrap persian-font text-rose-600 font-bold text-lg dark:text-gray-100">
-                          <p className="md:hidden opacity-100 font-bold text-sm text-gray-900">
+                        <td className="dark:px-2 place-content-end justify-between w-full md:table-cell py-2 md:py-0 flex whitespace-nowrap persian-font text-rose-600 font-bold text-lg dark:text-gray-100">
+                          <p className="md:hidden opacity-100 font-bold text-sm text-gray-900 dark:text-gray-200">
                             جمع جزء
                           </p>
                           <p className="place-content-center flex ml-2">
