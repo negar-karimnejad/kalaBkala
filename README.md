@@ -1,6 +1,6 @@
 # <p align="center">Wanna see my e-commerce website online?</p>
 
-<img src="public/images/readme/img (2).png"/>
+<img src="public/images/readme/img (1).png"/>
 
 ## <p align="center">It has dark mode and light mode</p>
 
