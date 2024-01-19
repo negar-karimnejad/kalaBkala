@@ -1,5 +1,6 @@
 # <p align="center">Wanna see my e-commerce website online?</p>
-
+<p align="center">To support me, give star⭐ to this repository please.
+I appreciate your support in advance. ❤</p>
 <img src="public/images/readme/img (0).png"/>
 
 ## <p align="center">It has dark mode and light mode</p>
